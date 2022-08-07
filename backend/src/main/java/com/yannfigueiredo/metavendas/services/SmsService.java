@@ -22,24 +22,24 @@ public class SmsService {
 	@Value("${twilio.phone.from}")
 	private String twilioPhoneFrom;
 
-	@Value("${twilio.phone.to}")
-	private String twilioPhoneTo;
+	/*@Value("${twilio.phone.to}")
+	private String twilioPhoneTo;*/
 	
 	@Autowired
 	private SaleRepository saleRepository;
 
-	public void sendSms(Long id) {
+	public void sendSms(Long id, String phone) {
 		
 		Sale sale = saleRepository.findById(id).get();
 		
-		String date = sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
+		String date = sale.getDate().getDayOfMonth() + "/" + sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
 		
 		String msg = "Olá, " + sale.getSeller() + 
 				". Suas vendas em " + date + " totalizam R$ " + String.format("%.2f", sale.getTotal()) + ".";
 
 		Twilio.init(twilioSid, twilioKey);
 
-		PhoneNumber to = new PhoneNumber(twilioPhoneTo);
+		PhoneNumber to = new PhoneNumber(phone);
 		PhoneNumber from = new PhoneNumber(twilioPhoneFrom);
 
 		Message message = Message.creator(to, from, msg).create();

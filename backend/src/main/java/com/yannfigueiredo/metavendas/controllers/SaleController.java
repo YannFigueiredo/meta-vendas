@@ -43,8 +43,8 @@ public class SaleController {
 		return ResponseEntity.ok().body(list);
 	}
 	
-	@GetMapping("/{id}/notification")
-	public void notifySms(@PathVariable Long id) {
-		smsService.sendSms(id);
+	@GetMapping("/{id}/{phone}/notification")
+	public void notifySms(@PathVariable Long id, @PathVariable String phone) {
+		smsService.sendSms(id, phone);
 	}
 }
