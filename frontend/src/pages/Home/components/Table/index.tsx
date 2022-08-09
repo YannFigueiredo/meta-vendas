@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { SalesContext } from "../../../../contexts/Sales";
-import { Container } from "./styles";
+import { Container, Notification } from "./styles";
 import { formatDate } from "../../helpers";
+import icon from "../../../../assets/icon.png";
 
 export default function Table(){
     const { sales } = useContext(SalesContext);
@@ -29,7 +30,11 @@ export default function Table(){
                             <td>{sale.visits}</td>
                             <td>{sale.sales}</td>
                             <td>R$ {sale.total.toFixed(2)}</td>
-                            <td>Notificar</td>
+                            <td>
+                                <Notification>
+                                    <img src={icon} alt="Botão para notificar por SMS"/>
+                                </Notification>
+                            </td>
                         </tr>
                     ))}
                 </tbody>

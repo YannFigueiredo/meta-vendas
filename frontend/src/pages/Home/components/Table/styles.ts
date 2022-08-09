@@ -26,3 +26,14 @@ export const Container = styled.div `
         border-bottom: 1px solid #5F6E82;
     }
 `
+
+export const Notification = styled.div `
+    width: 35px;
+    margin: auto;
+    cursor: pointer;
+
+    img{
+        max-width: 100%;
+        width: 100%;
+    }
+`

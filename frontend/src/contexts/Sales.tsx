@@ -9,7 +9,9 @@ const initialValue = {
     page: '0',
     setPage: () => {},
     filter: '',
-    setFilter: () => {}
+    setFilter: () => {},
+    phone: '',
+    setPhone: () => {}
 }
 
 export const SalesContext = createContext<SalesContextType>(initialValue);
@@ -18,9 +20,10 @@ export default function SalesProvider({children}: SalesContextProps){
     const [ sales, setSales ] = useState<SalesResponse>(initialValue.sales);
     const [ page, setPage ] = useState<string>(initialValue.page);
     const [ filter, setFilter ] = useState<string>(initialValue.filter);
+    const [ phone, setPhone ] = useState<string>(initialValue.phone);
 
     async function loadApi(){
-        await salesApi.get(`/sales`)
+        await salesApi.get(`/sales?page=${page}${filter}`)
         .then(response => {
             setSales(response.data);
         })
@@ -29,10 +32,10 @@ export default function SalesProvider({children}: SalesContextProps){
 
     useEffect(() => {
         loadApi();
-    }, []);
+    }, [filter, page]);
 
     return(
-        <SalesContext.Provider value={{sales, setSales, page, setPage, filter, setFilter}}>
+        <SalesContext.Provider value={{sales, setSales, page, setPage, filter, setFilter, phone, setPhone}}>
             {children}
         </SalesContext.Provider>
     );
