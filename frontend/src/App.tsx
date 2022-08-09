@@ -1,10 +1,13 @@
 import React from 'react';
 import RoutesApp from './Routes';
+import SalesProvider from './contexts/Sales';
 
 function App() {
   return (
     <div>
-      <RoutesApp/>
+      <SalesProvider>
+        <RoutesApp/>
+      </SalesProvider>
     </div>
   );
 }
