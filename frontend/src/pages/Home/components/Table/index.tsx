@@ -3,9 +3,18 @@ import { SalesContext } from "../../../../contexts/Sales";
 import { Container, Notification } from "./styles";
 import { formatDate } from "../../helpers";
 import icon from "../../../../assets/icon.png";
+import salesApi from "../../../../services/sales-api";
 
 export default function Table(){
-    const { sales } = useContext(SalesContext);
+    const { sales, phone } = useContext(SalesContext);
+    const sendSms = async (id: number) => {
+        await salesApi.get(`sales/${id}/${phone}/notification`)
+        .then(() => {alert(`Notificação enviada com sucesso para ${phone}.`)})
+        .catch((error) => {
+            alert("Insira um número válido! Ex: +5591912345678")
+            console.error("Erro: " + error)
+        });
+    };
 
     return(
         <Container>
@@ -31,7 +40,7 @@ export default function Table(){
                             <td>{sale.sales}</td>
                             <td>R$ {sale.total.toFixed(2)}</td>
                             <td>
-                                <Notification>
+                                <Notification onClick={() => {sendSms(sale.id)}}>
                                     <img src={icon} alt="Botão para notificar por SMS"/>
                                 </Notification>
                             </td>
