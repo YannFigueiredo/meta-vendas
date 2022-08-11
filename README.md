@@ -5,7 +5,7 @@
 
 https://metavendas.netlify.app/
 
-Aplicativo Web que lista as metas de vendas batidas por vendedores fictícios e ainda notifica-os, quando o usuário clica no botão de notifcar, sobre a meta diária atinjida.
+Aplicativo Web que lista as metas de vendas batidas por vendedores fictícios e ainda notifica-os, quando o usuário clica no botão de notifcar, sobre a meta diária atingida.
 
 ## Layout
 <img src="https://github.com/YannFigueiredo/assets/blob/main/meta-vendas/tela-home.png"  alt="Tela Página Inicial" title="Página inicial"/>
