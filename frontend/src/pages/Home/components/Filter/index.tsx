@@ -3,7 +3,7 @@ import { useContext, useState, useEffect } from "react";
 import { SalesContext } from "../../../../contexts/Sales";
 
 export default function Filter(){
-    const { setFilter, setPage, setPhone } = useContext(SalesContext);
+    const { setFilter, setPage } = useContext(SalesContext);
     const [ minDate, setMinDate ] = useState<string>('');
     const [ maxDate, setMaxDate ] = useState<string>('');
 
@@ -30,12 +30,15 @@ export default function Filter(){
                     <input type="date" id="date-max" onChange={(e) => {setMaxDate(e.target.value)}}/>
                 </Input>
             </div>
-            <Input>
+            <a href="https://receive-smss.com/sms/33779279015/" target="blank">
+                <button>Ver notificação</button>
+            </a>
+            {/*<Input>
                 <label htmlFor="phone">Telefone destinatário</label>
                 <input type="tel" placeholder="Ex: +5591912345678" id="phone" onChange={(e) => {
                     setPhone(e.target.value)
                     }}/>
-            </Input>
+                </Input>*/}
         </Container>
     );
 }

@@ -1,7 +1,9 @@
+import { Container } from "./styles";
+
 export default function NoFound(){
     return(
-        <div>
-            
-        </div>
+        <Container>
+            <span>Página não encontrada!</span>
+        </Container>
     );
 }

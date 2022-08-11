@@ -9,6 +9,35 @@ export const Container = styled.div `
     div{
         display: flex;
     }
+
+    button{
+        width: 180px;
+        padding: 12px;
+        border: 1px solid #384459;
+        border-radius: 5px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: white;
+        background: #102347;
+        transition: all linear .4s;
+        cursor: pointer;
+    }
+
+    button:hover{
+        background: white;
+        color: #181818;
+        border-color: #102347;
+    }
+
+    @media screen and (max-width: 480px){
+        div{
+            flex-direction: column;
+        }
+    }
+
+    @media screen and (max-width: 768px){
+        flex-direction: column;
+    }
 `
 
 export const Input = styled.div `
@@ -31,5 +60,9 @@ export const Input = styled.div `
     label{
         color: white;
         font-weight: 400;
+    }
+
+    @media screen and (max-width: 768px){
+        margin-bottom: 15px;
     }
 `

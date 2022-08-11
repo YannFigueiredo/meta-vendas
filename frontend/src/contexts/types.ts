@@ -20,9 +20,7 @@ export type SalesContextType = {
     page: string,
     setPage: (newPage: string) => void,
     filter: string,
-    setFilter: (newFilter: string) => void,
-    phone: string,
-    setPhone: (newPhone: string) => void
+    setFilter: (newFilter: string) => void
 }
 
 export type SalesContextProps = {

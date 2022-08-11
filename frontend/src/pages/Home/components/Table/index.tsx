@@ -6,10 +6,10 @@ import icon from "../../../../assets/icon.png";
 import salesApi from "../../../../services/sales-api";
 
 export default function Table(){
-    const { sales, phone } = useContext(SalesContext);
+    const { sales } = useContext(SalesContext);
     const sendSms = async (id: number) => {
-        await salesApi.get(`sales/${id}/${phone}/notification`)
-        .then(() => {alert(`Notificação enviada com sucesso para ${phone}.`)})
+        await salesApi.get(`sales/${id}/+33779279015/notification`)
+        .then(() => {alert(`Notificação enviada com sucesso para +33779279015.`)})
         .catch((error) => {
             alert("Insira um número válido! Ex: +5591912345678")
             console.error("Erro: " + error)
@@ -32,7 +32,7 @@ export default function Table(){
                 </thead>
                 <tbody>
                     {sales.content.map(sale => (
-                        <tr>
+                        <tr key={sale.id}>
                             <td>{sale.id}</td>
                             <td>{formatDate(sale.date)}</td>
                             <td>{sale.seller}</td>

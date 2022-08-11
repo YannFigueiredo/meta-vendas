@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div `
+    overflow-y: auto;
+
     table{
         border-spacing: 0;
         min-width: 100%;
